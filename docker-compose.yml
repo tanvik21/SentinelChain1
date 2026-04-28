@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./signal_service
+      dockerfile: Dockerfile
+    container_name: sentinel_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    env_file:
+      - ./signal_service/.env
+    restart: always
+
+  frontend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: sentinel_frontend
+    ports:
+      - "5174:5174"
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: always

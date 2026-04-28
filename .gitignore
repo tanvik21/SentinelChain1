@@ -1,0 +1,32 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+
+# Models (large files)
+signal_service/models/*.pkl
+signal_service/models/*.csv
+
+# Node
+node_modules/
+app/dist/
+
+# Data
+data/
+*.json
+signal_service/*.txt
+signal_service/summary.json
+signal_service/fetch_summary.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
